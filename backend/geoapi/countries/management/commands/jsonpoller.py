@@ -23,7 +23,7 @@ class Command(BaseCommand):
             x=json.loads(text)
             
             self.jsonpub(queue,x)
-            time.sleep(10)
+            time.sleep(10*60*60)
 
         
     def jsonpub(self,queue,inpjson):
