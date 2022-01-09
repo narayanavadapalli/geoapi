@@ -1,16 +1,20 @@
-import aiohttp
-import asyncio
+import requests,os
+import time
 
-async def main():
-    geojson='https://datahub.io/core/geo-countries/r/countries.geojson'
-    async with aiohttp.ClientSession() as session:
-        async with session.get(geojson) as response:
+proxy=os.getenv("http_proxy","")
 
-            print("Status:", response.status)
-            print("Content-type:", response.headers['content-type'])
+geojson='https://datahub.io/core/geo-countries/r/countries.geojson'
+geojson=' https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
 
-            html = await response.text()
-            print("Body:", html, "...")
+proxyDict = { 
+              "http"  : proxy, 
+              "https" : proxy,
+              
+            }
+def HandleJson(inpjson):
+    print(inpjson)
+while(True):
+    response=requests.get(geojson,proxies=proxyDict)
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
+    HandleJson(response.json())
+    time.sleep(60*60*10)

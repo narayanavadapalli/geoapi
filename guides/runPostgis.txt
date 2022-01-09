@@ -1,0 +1,1 @@
+docker run -d --name gisdb -e POSTGRES_PASSWORD=gispassword -v /home/radhakrishna/projects/database/geospatialdata:/var/lib/postgresql/data -p 5400:5432 postgis/postgis
