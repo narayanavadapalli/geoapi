@@ -57,5 +57,6 @@ Host mounts have been used on postgis as docker persistent volumes have a manage
  2. Load testing for a single container
  3. Production mode settings for geodjango
  4. Non root based dockerfile setup
+ 5. Code styling formatting 
 
 
