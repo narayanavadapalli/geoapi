@@ -30,7 +30,7 @@ Finally over this container nginx is run on the djangonetwork to act as a revers
 
 To spawn the system , the command :
 
-    django-compose up --scale backend=2
+    docker-compose up --scale backend=2
 
 Can be used , to spawn 2 containers with backend and nginx forwarding the user requests to those 2 containers by load balancing. ( Actual load balancing is done by docker dns here in the form of  virtualized network )
 
