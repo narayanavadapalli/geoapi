@@ -7,8 +7,10 @@ WORKDIR /code
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     binutils libproj-dev gdal-bin proj-bin libgeos++
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+
+#COPY requirements.txt requirements.txt
 COPY . .
-#CMD ["python","manage.py migrate"]
+RUN pip install -r requirements.txt
+
+#  ["python","manage.py migrate"]
 #CMD ["python", "brokerapp/pullJson.py"]

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis', # GeoDjango
     'countries',
+    'bhoosearch',
     'rest_framework'
 ]
 
