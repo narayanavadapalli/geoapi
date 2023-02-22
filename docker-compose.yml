@@ -1,0 +1,42 @@
+##https://docker-docs.netlify.app/get-started/part3/#your-first-docker-composeyml-file
+#https://medium.com/@vinodkrane/microservices-scaling-and-load-balancing-using-docker-compose-78bf8dc04da9
+version: "3"
+services:
+
+  database:
+    image: postgis/postgis
+    environment:
+     - POSTGRES_PASSWORD=gispassword
+    volumes:
+     - /home/radhakrishna/projects/database/searchmicro:/var/lib/postgresql/data
+     - /home/radhakrishna/projects/searchmicro/scripts:/scripts
+    ports:
+      - "5342:5432"
+    expose:
+      - "5432"
+    networks:
+      - djangonetwork
+  backend:
+    build: backend/
+    command: 'sh /code/server.sh'
+    volumes:
+     - /home/radhakrishna/projects/searchmicro/backend:/backend
+    links:
+     - database
+    depends_on:
+     - database
+    expose:
+      - "8000"
+    networks:
+      - djangonetwork
+
+
+networks:
+  djangonetwork:
+      driver: bridge
+
+
+
+
+
+  
